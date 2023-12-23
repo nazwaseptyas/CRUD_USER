@@ -1,17 +1,13 @@
 <?php
 require 'koneksi.php';
 
-// Check if the 'id' parameter is set in the URL
 if (isset($_GET['id'])) {
     $user_id = $_GET['id'];
 
-    // Retrieve user data from the database
     $query_sql = "SELECT * FROM tbl_users WHERE id = $user_id";
     $result = mysqli_query($conn, $query_sql);
 
-    // Check if the user with the specified ID exists
     if ($result && $row = mysqli_fetch_assoc($result)) {
-        // Store user data in $user_data array
         $user_data = $row;
     } else {
         echo "User not found";
@@ -57,7 +53,7 @@ if (isset($_GET['id'])) {
                 <input type="email" name="edit_email" class="form-control" id="editEmail"
                     value="<?php echo $user_data['email']; ?>" required />
             </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 
